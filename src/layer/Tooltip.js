@@ -194,6 +194,9 @@ export const Tooltip = DivOverlay.extend({
 	},
 
 	_updatePosition() {
+		if (!this._map) {
+			return;
+		}
 		const pos = this._map.latLngToLayerPoint(this._latlng);
 		this._setPosition(pos);
 	},
@@ -207,6 +210,9 @@ export const Tooltip = DivOverlay.extend({
 	},
 
 	_animateZoom(e) {
+		if (!this._map) {
+			return;
+		}
 		const pos = this._map._latLngToNewLayerPoint(this._latlng, e.zoom, e.center);
 		this._setPosition(pos);
 	},
